@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <title>Unilook</title>
+  <link rel="icon" type="image/png" href="Logo SPU SIT/unilooklogo.png">
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #d4a574;
+      --secondary: #2c3e50;
+      --accent: #e74c3c;
+    }
+
+    body {
+      font-family: 'Kanit', sans-serif;
+    }
+
+    .btn-primary,
+    #modal-addcart {
+      background: var(--primary) !important;
+      border: none !important;
+    }
+
+    .btn-primary:hover,
+    #modal-addcart:hover {
+      background: #c69564 !important;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: 'Prompt', sans-serif;
+      color: var(--secondary);
+    }
+
+    .highlight {
+      color: var(--primary);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo d-flex align-items-center text-decoration-none" style="color: inherit;">
+        <img src="Logo SPU SIT/unilooklogo2.png" alt="Unilook Icon" style="height: 50px;">
+      </a>
+
+      <nav class="nav-links" id="main-nav">
+        <a href="index.html#home">หน้าแรก</a>
+
+        <a href="product.html">สินค้า</a>
+
+        <a href="index.html#about">เกี่ยวกับเรา</a>
+
+        <a href="index.html#contact">ติดต่อ</a>
+      </nav>
+      <div class="nav-actions">
+        <input type="text" class="search-input" id="search-input" placeholder="ค้นหาสินค้า..." />
+        <button class="icon-btn" id="cart-toggle">
+          ตะกร้า (<span id="cart-count">0</span>)
+        </button>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="เปิดเมนู">☰</button>
+    </div>
+  </header>
+  <main>
+    <section id="products" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>สินค้า</h2>
+          <p>เลือก Mix & Match ให้เข้ากับสไตล์ของคุณ</p>
+        </div>
+        <div class="product-toolbar-container mb-4">
+          <div
+            class="product-toolbar d-flex flex-wrap justify-content-between align-items-center gap-3 p-3 bg-white rounded-3 shadow-sm">
+
+            <div class="toolbar-group d-flex align-items-center">
+              <span class="me-2 fw-bold text-muted"><i class="bi bi-grid-fill me-1"></i> กรองสินค้า:</span>
+              <div class="dropdown">
+                <button class="btn btn-outline-dark dropdown-toggle rounded-pill px-4" type="button" id="filterCategory"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  หมวดหมู่: ทั้งหมด
+                </button>
+                <ul class="dropdown-menu shadow border-0" aria-labelledby="filterCategory">
+                  <li><a class="dropdown-item" href="#" data-category="all">ทั้งหมด</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#" data-category="tshirt">เสื้อยืด</a></li>
+                  <li><a class="dropdown-item" href="#" data-category="shirt">เชิ้ต</a></li>
+                  <li><a class="dropdown-item" href="#" data-category="pants">กางเกง</a></li>
+                  <li><a class="dropdown-item" href="#" data-category="set">ชุดเซ็ต</a></li>
+                  <li><a class="dropdown-item" href="#" data-category="hat">หมวก</a></li>
+                  <li><a class="dropdown-item" href="#" data-category="other">อื่นๆ</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="toolbar-group">
+              <div class="chip-group bg-light rounded-pill p-1 d-inline-flex">
+                <button class="chip is-active rounded-pill border-0 px-3 py-1" data-gender="all">ทั้งหมด</button>
+                <button class="chip rounded-pill border-0 px-3 py-1" data-gender="man">ชาย</button>
+                <button class="chip rounded-pill border-0 px-3 py-1" data-gender="woman">หญิง</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="product-grid" id="product-list">
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer text-light mt-5 py-4" style="background-color: rgb(15, 15, 15);">
+    <div class="container">
+      <div class="row text-center text-md-start">
+
+        <!-- Social Media -->
+        <div class="col-md-4 mb-4">
+          <h5 class="fw-bold mb-3">โซเชียลมีเดีย</h5>
+          <a href="https://www.facebook.com/" target="_blank" class="footer-social">
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" class="footer-social">
+            <i class="bi bi-instagram"></i>
+          </a>
+          <a href="https://line.me" target="_blank" class="footer-social">
+            <i class="bi bi-line"></i>
+          </a>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-md-4 mb-4">
+          <h5 class="fw-bold mb-3">ติดต่อเรา</h5>
+          <ul class="list-unstyled footer-contact">
+            <li>LINE: @Unilook-fashion</li>
+            <li>Instagram: @Unilook.fashion.store</li>
+            <li>โทร: 08x-xxx-xxxx</li>
+          </ul>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="col-md-4 mb-4">
+          <h5 class="fw-bold mb-3">เมนู</h5>
+          <ul class="list-unstyled footer-links">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="product.html">สินค้า</a></li>
+            <li><a href="index.html#about">เกี่ยวกับเรา</a></li>
+            <li><a href="index.html#contact">ติดต่อ</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <hr class="border-secondary">
+
+      <div class="text-center mt-3">
+        <p class="mb-0">© 2025 Unilook FASHION. All rights reserved.</p>
+        <p class="footer-note mb-0">*เงื่อนไขส่วนลดเป็นไปตามที่ร้านกำหนด</p>
+      </div>
+    </div>
+  </footer>
+  <aside class="cart-panel" id="cart-panel" aria-hidden="true">
+    <div class="cart-header">
+      <h2>ตะกร้าสินค้า</h2>
+      <button class="icon-btn" id="cart-close">✕</button>
+    </div>
+    <div class="cart-body">
+      <ul class="cart-items" id="cart-items">
+        <li class="cart-empty">ยังไม่มีสินค้าในตะกร้า</li>
+      </ul>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>ยอดรวม</span>
+        <span id="cart-total">฿0</span>
+      </div>
+      <button class="btn-primary btn-full">ชำระเงิน</button>
+    </div>
+  </aside>
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <!-- Product Popup Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+
+      <!-- ปุ่มปิด -->
+      <span class="close-modal" id="modal-close">&times;</span>
+
+      <div class="modal-body">
+
+        <!-- รูปสินค้า -->
+        <div class="modal-image">
+          <img id="modal-img" src="" alt="product">
+        </div>
+
+        <!-- ข้อมูลสินค้า -->
+        <div class="modal-info">
+          <h2 id="modal-title"></h2>
+          <span class="text-muted">หมวด: </span><span class="text-muted" id="modal-category"></span>
+          <h6 class="pt-4">รายละเอียด</h6>
+          <p id="modal-description"></p>
+
+          <div class="mb-3">
+            <label for="modal-size-select" class="fw-bold">ไซส์:</label>
+            <select id="modal-size-select" class="form-select mt-1" style="max-width: 150px; border-radius: 8px;">
+            </select>
+          </div>
+
+          <label>จำนวน *</label>
+          <div class="qty-box">
+            <button id="qty-decrease">-</button>
+            <input id="qty-input" type="text" value="1">
+            <button id="qty-increase">+</button>
+          </div>
+          <h3 id="modal-price"></h3>
+          <!-- ปุ่มใน popup ต้องใช้ id แยกออกจากปุ่มสินค้า -->
+          <button id="modal-addcart" class="btn-primary btn-full " data-name="" data-price="" data-sizes="">
+            เพิ่มลงตะกร้า
+          </button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="btn-back-to-top" title="กลับขึ้นด้านบน">
+    ↑
+  </button>
+
+  <script src="js/products.js"></script>
+  <script src="js/renderProducts.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
